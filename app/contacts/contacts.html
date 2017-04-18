@@ -1,0 +1,28 @@
+<div class="row text-right" ng-controller="popupFormCtrl as popupForm">
+    <a ng-click="popupForm.open()"><button class="btn btn-info">Add New Contact <i class="fa fa-plus" aria-hidden="true"></i></button></a>
+</div><br>
+    <div class="row" class="text-center">
+        <div class="col-md-12">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th><h3>Name</h3></th>
+                        <th><h3>E-mail</h3></th>
+                        <th><h3>Address</h3></th>
+                        <th><h3>Action</h3></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><h4>Yash</h4></td>
+                        <td><h4>admin@admin.com</h4></td>
+                        <td><h4>New York, US</h4></td>
+                        <td>
+                            <a ng-click="showEditForm()"><button class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
+                            <span><a ng-click="removeContact()"><button class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button></a></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
