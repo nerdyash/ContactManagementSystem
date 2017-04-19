@@ -1,5 +1,6 @@
-<div class="row text-right" ng-controller="popupFormCtrl as popupForm">
-    <a ng-click="popupForm.open()"><button class="btn btn-info">Add New Contact <i class="fa fa-plus" aria-hidden="true"></i></button></a>
+<div ng-controller="myContactsCtrl">
+<div class="row text-right" ng-controller="popupFormCtrl">
+    <a ng-click="open()"><button class="btn btn-info" ng-click="showAddForm()">Add New Contact <i class="fa fa-plus" aria-hidden="true"></i></button></a>
 </div><br>
     <div class="row" class="text-center">
         <div class="col-md-12">
@@ -13,16 +14,17 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td><h4>Yash</h4></td>
-                        <td><h4>admin@admin.com</h4></td>
-                        <td><h4>New York, US</h4></td>
+                    <tr ng-repeat="contact in contacts">
+                        <td><h4>{{contact.name}}</h4></td>
+                        <td><h4>{{contact.email}}</h4></td>
+                        <td><h4>{{contact.state}}, {{contact.country}}</h4></td>
                         <td>
-                            <a ng-click="showEditForm()"><button class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
-                            <span><a ng-click="removeContact()"><button class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button></a></span>
+                            <a ng-click="showEditForm(contact)"><button class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
+                            <span><a ng-click="removeContact(contact)"><button class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button></a></span>
                         </td>
                     </tr>
                 </tbody>
             </table>
         </div>
     </div>
+</div>

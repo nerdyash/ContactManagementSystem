@@ -6,9 +6,14 @@ angular.module('myContactApp', [
   'myContactApp.contacts',
   'firebase',
   'ui.bootstrap'
-
-]).
-config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
+]).run(function () {
+    var config = {
+        apiKey: "Your_Api_Key",
+        databaseURL: "https://mycontactsapp-4c328.firebaseio.com/",
+    };
+    firebase.initializeApp(config);
+})
+    .config(['$locationProvider', '$routeProvider', function($locationProvider, $routeProvider) {
   $locationProvider.hashPrefix('!');
 
   $routeProvider.otherwise({redirectTo: '/contacts'});

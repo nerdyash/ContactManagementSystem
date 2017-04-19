@@ -9,15 +9,23 @@ angular.module('myContactApp.contacts', ['ngRoute', 'firebase', 'ui.bootstrap'])
   });
 }])
 
-.controller('myContactsCtrl', ['$firebaseArray', function($firebaseArray) {
-  var vm = this;
-
+.controller('myContactsCtrl', ['$firebaseArray', '$scope', function($firebaseArray, $scope) {
+     var ref = firebase.database().ref().child('contacts');
+     $scope.contacts = $firebaseArray(ref);
+    $scope.addFormShow = true;
+     // console.log($scope.contacts);
+    $scope.data = {};
+    $scope.addFormSubmit = function () {
+        console.log("Adding contact...");
+        ref.push($scope.data);
+        $scope.addFormShow = false;
+    }
 
 }])
 
-.controller('popupFormCtrl', ['$uibModal', function ($uibModal) {
-    var vm = this;
-    vm.open = function () {
+.controller('popupFormCtrl', ['$uibModal', '$scope',function ($uibModal, $scope) {
+
+    $scope.open = function () {
         console.log("Opening popup form");
         var uibModelInstance = $uibModal.open({
             templateUrl: 'contacts/popup.html',
@@ -26,6 +34,7 @@ angular.module('myContactApp.contacts', ['ngRoute', 'firebase', 'ui.bootstrap'])
     }
 }])
 .controller('popupCtrl', ['$scope','$uibModalInstance',function ($scope, $uibModalInstance) {
+
         $scope.cancel = function () {
             $uibModalInstance.dismiss('cancel');
         };
