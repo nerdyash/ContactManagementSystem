@@ -9,7 +9,7 @@ angular.module('myContactApp.contacts', ['ngRoute', 'firebase', 'ui.bootstrap'])
   });
 }])
 
-.controller('myContactsCtrl', ['$firebaseArray', '$scope', function($firebaseArray, $scope) {
+.controller('myContactsCtrl', ['$firebaseArray', '$scope', function($firebaseArray, $scope, $uibModalInstance) {
      var ref = firebase.database().ref().child('contacts');
      $scope.contacts = $firebaseArray(ref);
     $scope.addFormShow = true;
@@ -18,9 +18,21 @@ angular.module('myContactApp.contacts', ['ngRoute', 'firebase', 'ui.bootstrap'])
     $scope.addFormSubmit = function () {
         console.log("Adding contact...");
         ref.push($scope.data);
-        $scope.addFormShow = false;
+        $scope.addFormShow =false;
+        alert("Contact added successfully");
+    }
+    $scope.editFormShow = true;
+    $scope.editMe = function () {
+
+        ref.child($scope.$id).update($scope.data);
+        $scope.editFormShow = false;
+        console.log($scope.data);
+        // alert("Contact Updated.");
     }
 
+    $scope.removeContact = function (contact) {
+        ref.child(contact.$id).remove();
+    }
 }])
 
 .controller('popupFormCtrl', ['$uibModal', '$scope',function ($uibModal, $scope) {
@@ -34,6 +46,40 @@ angular.module('myContactApp.contacts', ['ngRoute', 'firebase', 'ui.bootstrap'])
     }
 }])
 .controller('popupCtrl', ['$scope','$uibModalInstance',function ($scope, $uibModalInstance) {
+
+        $scope.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+        };
+    }])
+    .controller('showFormCtrl', ['$uibModal', '$scope',function ($uibModal, $scope) {
+
+            $scope.open = function (contact) {
+            console.log("Opening contact showing form");
+            var uibModelInstance = $uibModal.open({
+                templateUrl: 'contacts/showContact.html',
+                controller: 'showCtrl',
+                scope: $scope
+            });
+        }
+    }])
+    .controller('showCtrl', ['$scope','$uibModalInstance',function ($scope, $uibModalInstance) {
+
+        $scope.cancel = function () {
+            $uibModalInstance.dismiss('cancel');
+        };
+    }])
+    .controller('editFormCtrl', ['$uibModal', '$scope',function ($uibModal, $scope) {
+
+        $scope.open = function (contact) {
+            console.log("Opening contact editing form");
+            var uibModelInstance = $uibModal.open({
+                templateUrl: 'contacts/editContact.html',
+                controller: 'editCtrl',
+                scope: $scope
+            });
+        }
+    }])
+    .controller('editCtrl', ['$scope','$uibModalInstance',function ($scope, $uibModalInstance) {
 
         $scope.cancel = function () {
             $uibModalInstance.dismiss('cancel');

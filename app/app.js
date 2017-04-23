@@ -8,7 +8,7 @@ angular.module('myContactApp', [
   'ui.bootstrap'
 ]).run(function () {
     var config = {
-        apiKey: "Your_Api_Key",
+        apiKey: "Your_api_key",
         databaseURL: "https://mycontactsapp-4c328.firebaseio.com/",
     };
     firebase.initializeApp(config);

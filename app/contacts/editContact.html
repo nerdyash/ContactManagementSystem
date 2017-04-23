@@ -1,0 +1,43 @@
+
+<div ng-controller="myContactsCtrl" ng-init="editFormShow=true">
+
+    <div ng-controller="popupFormCtrl" ng-if="editFormShow">
+        <div class="modal-header" >
+            <h3 class="modal-title">Update Contact</h3>
+        </div>
+        <div class="modal-body">
+            <form ng-submit="editMe()">
+                <div class="form-group ">
+                    <label for="name"><h3>Full Name</h3></label>
+                    <input type="text"  ng-model="contact.name" class="form-control" id="name" aria-describedby="nameHelp" placeholder="Enter Full Name" style="width:50%; height:35px; font-size:1.4em; color: orange;" required>
+                </div>
+                <div class="form-group" style="clear: left;">
+                    <label for="exampleInputEmail1"><h3>Email address</h3></label>
+                    <input type="email"  ng-model="contact.email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" style="width:50%; height:35px; font-size:1.4em; color: orange;" required>
+                </div>
+                <div class="form-group">
+                    <label for="address"><h3>Address</h3></label>
+                    <input type="text"  ng-model="contact.address" class="form-control" id="address" placeholder="Address" style="width:50%; height:35px; font-size:1.4em; color: orange;" required>
+                </div>
+                <div class="form-group" style="float: left">
+                    <label for="city"><h3>City</h3></label>
+                    <input type="text"  ng-model="contact.city" class="form-control" id="city" placeholder="City" style="width:60%; height:35px; font-size:1.4em; color: orange;" required>
+                </div>
+                <div class="form-group" style="float: left">
+                    <label for="state"><h3>State</h3></label>
+                    <input type="text"  ng-model="contact.state" class="form-control" id="state" maxlength="2" placeholder="State" style="width:50%; height:35px; font-size:1.4em; color: orange;" required>
+                </div>
+                <div class="form-group" style="clear: left">
+                    <label for="country"><h3>Country</h3></label>
+                    <input type="text"  ng-model="contact.country" class="form-control" id="country" placeholder="Country" style="width:50%; height:35px; font-size:1.4em; color: orange;" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone"><h3>Cell Number Format:(xxx-xxx-xxxx)</h3></label>
+                    <input type="tel" maxlength="12"  ng-model="contact.phone"  pattern="^\d{3}-\d{3}-\d{4}$" class="form-control" id="phone" placeholder="Cell Number" style="width:50%; height:35px; font-size:1.4em; color: orange;" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                <span><a ng-click="cancel()"><button class="btn btn-warning" type="button">Cancel</button></a></span>
+            </form>
+        </div>
+    </div>
+</div>

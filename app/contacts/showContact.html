@@ -1,0 +1,24 @@
+<div ng-controller="myContactsCtrl">
+    <div ng-controller="showFormCtrl">
+        <div class="modal-header" >
+            <h3 class="modal-title">Show Contact</h3>
+        </div>
+        <div class="modal-body">
+            <form class="container">
+                <div class="form-group row">
+                    <label class="col-xs-4"><h3>Full Name</h3></label>
+                    <h3 class="col-xs-8">{{contact.name}}</h3>
+                </div>
+                <div class="form-group row" style="clear: left;">
+                    <label class="col-xs-4"><h3>Email</h3></label>
+                    <h3 class="col-xs-8">{{contact.email}}</h3>
+                </div>
+                <div class="form-group row">
+                    <label class="col-xs-4"><h3>Cell Number</h3></label>
+                    <h3 class="col-xs-8">{{contact.phone}}</h3>
+                </div>
+                <span><a ng-click="cancel()"><button class="btn btn-warning" type="button">Cancel</button></a></span>
+            </form>
+        </div>
+    </div>
+</div>
