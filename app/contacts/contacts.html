@@ -22,7 +22,7 @@
                         <td><h4>{{contact.email}}</h4></td>
                         <td><h4>{{contact.state | uppercase}}, {{contact.country | uppercase}}</h4></td>
                         <td>
-                            <a ng-controller="editFormCtrl" ><button ng-click="open(contact)" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
+                            <a ng-controller="editFormCtrl" ng-click="showEditForm(contact)"><button ng-click="open(contact)" class="btn btn-primary"><i class="fa fa-pencil-square-o" aria-hidden="true"></i></button></a>
                             <span><a ng-click="removeContact(contact)"><button class="btn btn-danger"><i class="fa fa-times" aria-hidden="true"></i></button></a></span>
                         </td>
                     </tr>

@@ -21,10 +21,23 @@ angular.module('myContactApp.contacts', ['ngRoute', 'firebase', 'ui.bootstrap'])
         $scope.addFormShow =false;
         alert("Contact added successfully");
     }
-    $scope.editFormShow = true;
+
+    $scope.showEditForm = function(contact){
+        $scope.editFormShow = true;
+        $scope.id= contact.$id;
+        $scope.data.name = contact.name;
+        $scope.data.email = contact.email;
+
+        $scope.data.phone = contact.phone;
+        $scope.data.address = contact.address;
+        $scope.data.city = contact.city;
+        $scope.data.state = contact.state;
+        $scope.data.country = contact.country;
+
+    };
     $scope.editMe = function () {
 
-        ref.child($scope.$id).update($scope.data);
+        ref.child($scope.id).update($scope.data);
         $scope.editFormShow = false;
         console.log($scope.data);
         // alert("Contact Updated.");
